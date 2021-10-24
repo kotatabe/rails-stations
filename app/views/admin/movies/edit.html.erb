@@ -1,5 +1,6 @@
 <% provide(:title, 'Movies Changes') %>
-<main>
+<%= render 'layouts/sideBar'%>
+<div class="content">
 	<div class="registration-form">
 		<%= form_with model: [:admin, @movie] do |f| %>
 			<%= render 'shared/flash' %>
@@ -28,4 +29,4 @@
 			</div>
 		<% end %>
 	</div>
-</main>
+</div>

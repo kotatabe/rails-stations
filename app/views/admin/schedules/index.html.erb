@@ -1,0 +1,43 @@
+<% provide(:title, 'Schedule') %>
+<%= render 'layouts/sideBar'%>
+<div class="content">
+	<%= render 'shared/flash' %>
+	<div class="schedule-func">
+		<%= link_to new_admin_schedule_path do %>
+			<div class="new-btn btn-info btn">+ New</div>
+		<% end %>
+	</div>
+	<div class="schedules_table">
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>映画タイトル</th>
+				<th>movies_id</th>
+				<th>開始時刻</th>
+				<th>終了時刻</th>
+				<th>作成日時</th>
+				<th>更新日時</th>
+				<th></th>
+			</tr>
+			<% @schedules.each do |schedule| %>
+				<tr>
+						<td> <%= link_to schedule.id, edit_admin_schedule_path(schedule.id) %> </td>
+						<td> <%= schedule.movie.name %> </td>
+						<td> <%= schedule.movie_id %> </td>
+						<td> <%= schedule.start_time.to_s(:datetime_jp) %> </td>
+						<td> <%= schedule.end_time.to_s(:datetime_jp) %> </td>
+						<td> <%= schedule.created_at.to_s(:datetime_jp) %> </td>
+						<td> <%= schedule.updated_at.to_s(:datetime_jp) %> </td>
+						<td>
+							<%= link_to edit_admin_schedule_path(schedule.id) do %>
+								<i class="far fa-edit"></i>
+							<% end %>
+							<%= link_to admin_schedule_path(schedule.id), method: :delete, data: {confirm: "削除しますか？"} do %>
+								<i class="fas fa-trash"></i>
+							<% end %>
+						</td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+</div>

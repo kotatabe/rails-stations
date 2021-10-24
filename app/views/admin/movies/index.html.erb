@@ -1,7 +1,8 @@
 <% provide(:title, 'Tech Train') %>
-<main>
+<%= render 'layouts/sideBar'%>
+<div class="content">
 	<%= render 'shared/flash' %>
-	<div class="table">
+	<div class="movies_table">
 		<table>
 			<tr>
 				<th>ID</th>
@@ -33,4 +34,4 @@
 			<% end %>
 		</table>
 	</div>
-</main>
+</div>

@@ -1,0 +1,23 @@
+<%= render 'layouts/sideBar'%>
+<div class="content">
+	<div class="registration-form">
+		<%= form_with(model: [:admin, @schedule]) do |f| %>
+			<%= render 'shared/flash' %>
+			<div class="block">
+				<%= f.label :movie_id, "映画ID" %>
+				<%= f.text_field :movie_id, class: 'form-control' %>
+			</div>
+			<div class="block">
+				<%= f.label :start_time, "開始時刻" %>
+				<%= f.datetime_select :start_time, class: 'form-control', use_month_numbers: true, selected: Time.now + 9.hour %>
+			</div>
+			<div class="block">
+				<%= f.label :end_time, "終了時刻" %>
+				<%= f.datetime_select :end_time, class: 'form-control', use_month_numbers: true, selected: Time.now + 9.hour %>
+			</div>
+			<div class='submit'>
+				<%= f.submit "Save", class: 'btn btn-primary' %>
+			</div>
+		<% end %>
+	</div>
+</div>

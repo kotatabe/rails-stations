@@ -1,4 +1,5 @@
-<main>
+<%= render 'layouts/sideBar'%>
+<div class="content">
 	<div class="registration-form">
 		<%= form_with(model: [:admin, @movie]) do |form| %>
 			<%= render 'shared/flash' %>
@@ -27,4 +28,4 @@
 			</div>
 		<% end %>
 	</div>
-</main>
+</div>

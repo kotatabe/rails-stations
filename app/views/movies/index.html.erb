@@ -1,5 +1,5 @@
 <% provide(:title, '映画作品一覧') %>
-<main>
+<div class="content">
 	<div class="search-box">
 		<%= form_with url: movies_path, method: :get do |f| %>
 			<div class="search-radio-btn">
@@ -30,4 +30,4 @@
 			<% end %>
 		</ul>
 	</div>
-</main>
+</div>
