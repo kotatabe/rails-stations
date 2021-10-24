@@ -31,6 +31,16 @@ class Admin::SchedulesController < ApplicationController
     end
   end
 
+  def destroy
+    @schedule = Schedule.find(params[:id])
+    if @schedule.destroy
+      redirect_to admin_schedules_path, notice: "データの削除に成功しました"
+    else
+      flash.now[:danger] = "データの削除に失敗しました"
+      render 'index'
+    end
+  end
+
   private
     def schedule_params
       params.require(:schedule).permit(:movie_id, :start_time, :end_time)
