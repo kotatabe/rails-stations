@@ -7,11 +7,17 @@
 .seating_chart {
 	table {
 		border: none;
+		border-collapse: separate;
+    border-spacing: 5px;
+		border-radius: 1px;
 		th {
 			border: none;
 		}
 		tr {
 			border: none;
+		}
+		.reserved {
+			background-color: rgb(100, 100, 100);
 		}
 	}
 }

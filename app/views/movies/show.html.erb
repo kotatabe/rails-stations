@@ -20,7 +20,7 @@
 	<div class="movie_schedule">
 		<h3>上映スケジュール</h3>
 		<div class="movie_schedule_content">
-			<%= form_with url: movie_url(@movie.id), method: :get do |f| %>
+			<%= form_with method: :get do |f| %>
 				<% (Date.current..Date.current.days_since(6)).each do |d| %>
 					<%= f.label :date, "#{d}" %>
 					<% if d == Date.current %>
@@ -29,20 +29,20 @@
 						<%= f.radio_button :date, "#{d}" %>
 					<% end %>
 				<% end %>
-				<%= f.submit "変更", class: 'btn btn-primary', name: "change" %>
+				<ul>
+					<% @schedules.each do |s| %>
+						<li>
+							<div class="time">
+								<span class="start"><%= s.start_time.strftime( "%H:%M" ) %></span>~<%= s.end_time.strftime( "%H:%M" ) %>
+							</div>
+							<%#= link_to movie_schedule_sheets_path(s.movie.id, s.id, date: @date) do %>
+							<%= f.submit "座席を予約する", class: 'reservation_btn btn', name: nil, formaction: movie_schedule_sheets_path(@movie.id, s.id) %>
+								<%# <button class="reservation_btn btn"> 座席を予約する </button> %>
+							<%# end %>
+						</li>
+					<% end %>
+				</ul>
 			<% end %>
-			<ul>
-				<% @schedules.each do |s| %>
-					<li>
-						<div class="time">
-							<span class="start"><%= s.start_time %></span>~<%= s.end_time %>
-						</div>
-						<%= link_to movie_schedule_sheets_path(s.movie.id, s.id, date: @date) do %>
-							<button class="reservation_btn btn"> 座席を予約する </button>
-						<% end %>
-					</li>
-				<% end %>
-			</ul>
 		</div>
 	</div>
 </div>

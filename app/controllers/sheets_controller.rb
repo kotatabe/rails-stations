@@ -4,6 +4,8 @@ class SheetsController < ApplicationController
     @movie_id = id_params[:movie_id]
     @schedule_id = id_params[:schedule_id]
     @date = date_params[:date]
+    @reserved_sheets_id = 
+        Reservation.all.where(schedule_id: id_params[:schedule_id]).where(date: @date).pluck(:sheet_id)
   end
 
   private
