@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_23_115526) do
+ActiveRecord::Schema.define(version: 2021_10_24_150859) do
 
   create_table "movies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,19 @@ ActiveRecord::Schema.define(version: 2021_10_23_115526) do
     t.boolean "is_showing"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reservations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.date "date", null: false
+    t.bigint "schedule_id", null: false
+    t.bigint "sheet_id", null: false
+    t.string "email", null: false, comment: "メールアドレス"
+    t.string "name", limit: 50, null: false, comment: "氏名"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["date", "schedule_id", "sheet_id"], name: "reservation_schedule_sheet_unique", unique: true
+    t.index ["schedule_id"], name: "reservation_schedule_id_idx"
+    t.index ["sheet_id"], name: "reservation_sheet_id_idx"
   end
 
   create_table "schedules", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

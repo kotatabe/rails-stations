@@ -1,0 +1,22 @@
+// Place all the styles related to the admin/schedules controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.main {
+	display: flex;
+}
+
+.schedules_table {
+	margin: 20px 60px;
+}
+
+.schedule-func {
+	margin: 30px 60px;
+	display: flex;
+  justify-content: flex-end;
+	.new-btn {
+		margin-right: 0;
+		margin-left: auto;
+	}
+}
+

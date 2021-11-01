@@ -1,0 +1,37 @@
+
+<div class="content">
+	<div class="registration-form">
+		<%= form_with model: @reservation, url: movie_schedule_reservations_path do |f| %>
+			<%= render 'shared/flash' %>
+			<%= f.hidden_field :movie_id, :value => @movie.id %>
+			<%= f.hidden_field :schedule_id, :value => @schedule.id %>
+			<%= f.hidden_field :sheet_id, :value => @sheet.id %>
+			<%= f.hidden_field :date, :value => @date %>
+			<div class="reserved_title">
+				作品名<br><%= @movie.name %>
+			</div>
+			<div class="reserved_schedule">
+				日時<br>
+				<%= @schedule.start_time.strftime("%Y年%m月%d日") %><br>
+				<%= @schedule.start_time.strftime("%H:%M") %>~
+				<%= @schedule.end_time.strftime("%H:%M") %>
+			</div>
+			<div class="reserved_sheet">
+				座席<br>
+				<%= @sheet.row.upcase %>
+				<%= @sheet.column %>
+			</div>
+			<div class="block">
+				<%= f.label :name, "氏名" %>
+				<%= f.text_field :name, class: 'form-control' %>
+			</div>
+			<div class="block">
+				<%= f.label :email, "メールアドレス" %>
+				<%= f.text_field :email, class: 'form-control' %>
+			</div>
+			<div class='submit'>
+				<%= f.submit "予約を完了する", class: 'btn-primary btn' %>
+			</div>
+		<% end %>
+	</div>
+</div>

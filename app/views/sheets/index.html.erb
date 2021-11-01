@@ -1,21 +1,19 @@
 <% provide(:title, '座席表') %>
 <div class="content">
+	<%= render 'shared/flash' %>
 	<div class="seating_chart">
 		<table>
+			<% @sheets.where(column: @sheets.first.column ).each do |sheet_col| %>
 				<tr>
-					<th></th>
-					<% @sheets.where(row: @sheets.first.row ).each do |sheet| %>
-						<th><%= sheet.column %></th>
+					<th><%= sheet_col.row.upcase %></th>
+					<% @sheets.where(row: @sheets.first.row ).each do |s| %>
+						<td>
+							<%= link_to new_movie_schedule_reservation_path(@movie_id, @schedule_id, sheet_id: @sheets.find_by(column: s.column, row: sheet_col.row).id, date: @date) do %>
+								<%= s.column %>
+							<% end %>
+						</td>
 					<% end %>
-				</tr>
-			<% @sheets.where(column: @sheets.first.column ).each do |sheet| %>
-				<tr>
-					<th><%= sheet.row %></th>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<th><%= sheet_col.row.upcase %></th>
 				</tr>
 			<% end %>
 		</table>

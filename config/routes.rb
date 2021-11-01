@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'sheets' => 'sheets#index'
-  resources :movies
-  
+  resources :movies do
+    resources :schedules do
+      resources :sheets
+      resources :reservations
+    end
+  end
   namespace :admin do
-    resources :movies
-    resources :schedules
+    resources :movies, :schedules
   end
 end

@@ -8,6 +8,9 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
     @schedules = @movie.schedules
+    if params[:date]
+      @date = params[:date]
+    end
   end
 
   private

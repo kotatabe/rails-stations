@@ -2,7 +2,7 @@
 <%= render 'layouts/sideBar'%>
 <div class="content">
 	<div class="registration-form">
-		<%= form_with model: [:admin, @schedule] do |f| %>
+		<%= form_with model: @schedule do |f| %>
 			<%= render 'shared/flash' %>
 			<div class="block">
 				<%= f.label :movie_id, "映画ID" %>

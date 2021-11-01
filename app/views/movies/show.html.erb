@@ -1,5 +1,6 @@
-<% provide(:title, '映画作品一覧') %>
+<% provide(:title, '映画情報') %>
 <div class="content">
+	<%= render 'shared/flash' %>
 	<div class="movie_info">
 		<img src="<%= @movie.image_url %>" alt="<%= @movie.name %>">
 		<div class="movie_info_content">
@@ -19,13 +20,26 @@
 	<div class="movie_schedule">
 		<h3>上映スケジュール</h3>
 		<div class="movie_schedule_content">
+			<%= form_with url: movie_url(@movie.id), method: :get do |f| %>
+				<% (Date.current..Date.current.days_since(6)).each do |d| %>
+					<%= f.label :date, "#{d}" %>
+					<% if d == Date.current %>
+						<%= f.radio_button :date, "#{d}", checked: true %>
+					<% else %>
+						<%= f.radio_button :date, "#{d}" %>
+					<% end %>
+				<% end %>
+				<%= f.submit "変更", class: 'btn btn-primary', name: "change" %>
+			<% end %>
 			<ul>
 				<% @schedules.each do |s| %>
 					<li>
 						<div class="time">
-							<%= s.start_time.strftime( "%H:%M" ) %>~<%= s.end_time.strftime( "%H:%M" ) %>
+							<span class="start"><%= s.start_time %></span>~<%= s.end_time %>
 						</div>
-						<div class="reservation_btn btn"> 予約する </div>
+						<%= link_to movie_schedule_sheets_path(s.movie.id, s.id, date: @date) do %>
+							<button class="reservation_btn btn"> 座席を予約する </button>
+						<% end %>
 					</li>
 				<% end %>
 			</ul>

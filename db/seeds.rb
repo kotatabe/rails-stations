@@ -10,8 +10,6 @@ n_column = 5
 
 ('a'..'c').each do |char|
 	n_column.times do |n|
-		Sheet.create([
-			{ column: n + 1, row: char }
-		])
+		Sheet.create( column: n + 1, row: char )
 	end
 end
