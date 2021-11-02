@@ -18,7 +18,7 @@ RSpec.describe MoviesController, type: :controller do
     end
 
     it 'movies(:id)「座席を予約する」ボタンが存在すること' do
-      expect(response.body).to include("<button").and include("座席を予約する")
+      expect(response.body).to include("<input").and include("座席を予約する")
     end
   end
 end
