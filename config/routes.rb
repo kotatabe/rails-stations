@@ -7,6 +7,6 @@ Rails.application.routes.draw do
     end
   end
   namespace :admin do
-    resources :movies, :schedules
+    resources :movies, :schedules, :reservations
   end
 end

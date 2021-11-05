@@ -1,0 +1,41 @@
+<% provide(:title, '予約管理画面') %>
+<%= render 'layouts/sideBar'%>
+<div class="content">
+	<%= render 'shared/flash' %>
+	<div class="reservation_func">
+		<%= link_to new_admin_reservation_path do %>
+			<div class="new-btn btn-info btn">+ New</div>
+		<% end %>
+	</div>
+	<div class="reservations_table">
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>映画タイトル</th>
+				<th>座席</th>
+				<th>日時</th>
+				<th>氏名</th>
+				<th>メールアドレス</th>
+				<th></th>
+			</tr>
+			<% @reservations.each do |r| %>
+				<tr>
+						<td> <%= r.id %>  </td>
+						<td> <%= r.schedule.movie.name %>  </td>
+						<td> <%= r.sheet.row %> <%= r.sheet.column %> </td>
+						<td> <%= r.date %> <%= r.schedule.start_time.strftime( "%H:%M" ) %>~<%= r.schedule.end_time.strftime( "%H:%M" ) %></td>
+						<td> <%= r.name %> </td>
+						<td> <%= r.email %> </td>
+						<td>
+							<%= link_to edit_admin_reservation_path(r.id) do %>
+								<i class="far fa-edit"></i>
+							<% end %>
+							<%= link_to admin_reservation_path(r.id), method: :delete, data: {confirm: "削除しますか？"} do %>
+								<i class="fas fa-trash"></i>
+							<% end %>
+						</td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+</div>

@@ -33,10 +33,10 @@
 					<% @schedules.each do |s| %>
 						<li>
 							<div class="time">
-								<span class="start"><%= s.start_time %></span>~<%= s.end_time %>
+								<span class="start"><%= s.start_time.strftime( "%H:%M" ) %></span>~<%= s.end_time.strftime( "%H:%M" ) %>
 							</div>
+							<%#= link_to movie_schedule_sheets_path(s.movie.id, s.id, date: @date) do %>
 							<%= f.submit "座席を予約する", class: 'reservation_btn btn', name: nil, formaction: movie_schedule_sheets_path(@movie.id, s.id) %>
-							<%# = link_to movie_schedule_sheets_path(s.movie.id, s.id, date: @date) do %>
 								<%# <button class="reservation_btn btn"> 座席を予約する </button> %>
 							<%# end %>
 						</li>

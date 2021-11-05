@@ -14,11 +14,8 @@ class MoviesController < ApplicationController
   end
 
   private
-    # def movie_params
-    #   params.require(:movie).permit(:name, :year, :description, :image_url, :is_showing)
-    # end
-
     def search_params
       params.permit(:keyword, :is_showing)
     end
+
 end

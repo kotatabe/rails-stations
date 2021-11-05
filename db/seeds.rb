@@ -13,3 +13,7 @@ n_column = 5
 		Sheet.create( column: n + 1, row: char )
 	end
 end
+
+3.times do |n|
+	Screen.create( number: n + 1, movie_id: n + 1 )
+end
