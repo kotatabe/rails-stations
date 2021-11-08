@@ -3,13 +3,41 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
+.reservation-order {
+	margin-bottom: 30px;
+	h4 {
+		width: 60%;
+		margin: 10px auto;
+		padding: 7px 50px;
+		color: #ffffff;
+		background-color: #666666;
+	}
+}
 
 .seating_chart {
+	width: 500px;
+	margin: 30px auto;
 	table {
 		border: none;
 		border-collapse: separate;
     border-spacing: 5px;
 		border-radius: 1px;
+		td {
+			padding: 0;
+			width: 45px;
+			height: 45px;
+			.seat-td {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+				height: 100%;
+			}
+			:hover {
+				background-color: #ff53d4;
+				color: #ffffff;
+			}
+		}
 		th {
 			border: none;
 		}
@@ -17,6 +45,7 @@
 			border: none;
 		}
 		.reserved {
+			pointer-events: none;
 			background-color: rgb(100, 100, 100);
 		}
 	}

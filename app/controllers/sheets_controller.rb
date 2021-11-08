@@ -1,4 +1,6 @@
 class SheetsController < ApplicationController
+	before_action :login_required
+
   def index
     @sheets = Sheet.all
     @movie_id = id_params[:movie_id]

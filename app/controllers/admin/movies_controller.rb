@@ -34,7 +34,7 @@ class Admin::MoviesController < ApplicationController
   def destroy
     @movie = Movie.find(params[:id])
     if @movie.destroy
-      redirect_to admin_movies_path, notice: "データの削除に成功しました"
+      redirect_to admin_movies_path, flash: {success: "データの削除に成功しました"}
     else
       flash.now[:danger] = "データの削除に失敗しました"
       render 'index'

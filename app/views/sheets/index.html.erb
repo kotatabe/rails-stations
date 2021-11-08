@@ -1,6 +1,9 @@
 <% provide(:title, '座席表') %>
 <div class="content">
 	<%= render 'shared/flash' %>
+	<div class="reservation-order">
+		<h4>座席を選択してください</h4>
+	</div>
 	<div class="seating_chart">
 		<table>
 			<% @sheets.each do |s| %>
@@ -15,7 +18,7 @@
 				<% else %>
 					<td>
 						<%= link_to new_movie_schedule_reservation_path(@movie_id, @schedule_id, sheet_id: s.id, date: @date) do %>
-							<%= s.column %>
+							<div class="seat-td"><%= s.column %></div>
 						<% end %>
 					</td>
 				<% end %>

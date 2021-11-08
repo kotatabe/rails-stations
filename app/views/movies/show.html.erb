@@ -18,30 +18,38 @@
 	</div>
 
 	<div class="movie_schedule">
-		<h3>上映スケジュール</h3>
+		<h4>上映スケジュール</h4>
 		<div class="movie_schedule_content">
 			<%= form_with method: :get do |f| %>
-				<% (Date.current..Date.current.days_since(6)).each do |d| %>
-					<%= f.label :date, "#{d}" %>
-					<% if d == Date.current %>
-						<%= f.radio_button :date, "#{d}", checked: true %>
-					<% else %>
-						<%= f.radio_button :date, "#{d}" %>
-					<% end %>
-				<% end %>
-				<ul>
-					<% @schedules.each do |s| %>
-						<li>
-							<div class="time">
-								<span class="start"><%= s.start_time.strftime( "%H:%M" ) %></span>~<%= s.end_time.strftime( "%H:%M" ) %>
+				<div class="date">
+					<div class="schedule-tab">
+						<% (Date.current..Date.current.days_since(4)).each do |d| %>
+							<div class="schedule-tab-item">
+								<% if d == Date.current %>
+									<%= f.radio_button :date, "#{d}", checked: true %>
+									<%= f.label :date, "#{d.strftime('%m / %-d')} (#{%w(日 月 火 水 木 金 土)[d.wday]})", value: "#{d}" %>
+								<% else %>
+									<%= f.radio_button :date, "#{d}" %>
+									<%= f.label :date, "#{d.strftime('%m / %-d')} (#{%w(日 月 火 水 木 金 土)[d.wday]})", value: "#{d}" %>
+								<% end %>
 							</div>
-							<%#= link_to movie_schedule_sheets_path(s.movie.id, s.id, date: @date) do %>
-							<%= f.submit "座席を予約する", class: 'reservation_btn btn', name: nil, formaction: movie_schedule_sheets_path(@movie.id, s.id) %>
-								<%# <button class="reservation_btn btn"> 座席を予約する </button> %>
-							<%# end %>
-						</li>
-					<% end %>
-				</ul>
+						<% end %>
+					</div>
+				</div>
+				<div class="time-schedule">
+					<h5>映画タイトル：<%= @movie.name %></h5>
+					<ul>
+						<p></p>
+						<% @schedules.each do |s| %>
+							<li>
+								<div class="time">
+									<span class="start"><%= s.start_time.strftime( "%H:%M" ) %></span>~<%= s.end_time.strftime( "%H:%M" ) %>
+								</div>
+								<%= f.submit "座席を予約する", class: 'reservation_btn btn', name: nil, formaction: movie_schedule_sheets_path(@movie.id, s.id) %>
+							</li>
+						<% end %>
+					</ul>
+				</div>
 			<% end %>
 		</div>
 	</div>

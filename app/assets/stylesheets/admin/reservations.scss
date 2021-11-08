@@ -16,8 +16,16 @@
 	}
 }
 
-.content {
-	h3 {
-		margin: 40px 60px;
+.reservation-info {
+	margin-bottom: 30px;
+	th {
+		width: 300px;
 	}
+	td {
+		width: 400px;
+	}
+}
+
+.btn {
+	width: auto;
 }

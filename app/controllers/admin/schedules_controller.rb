@@ -34,7 +34,7 @@ class Admin::SchedulesController < ApplicationController
 		def destroy
 			@schedule = Schedule.find(params[:id])
 			if @schedule.destroy
-				redirect_to schedules_path, notice: "データの削除に成功しました"
+				redirect_to schedules_path, flash: { :success: 'データの削除に成功しました'}
 			else
 				flash.now[:danger] = "データの削除に失敗しました"
 				render 'index'

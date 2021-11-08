@@ -26,7 +26,7 @@ class Admin::ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
     if @reservation.update(reservation_params)
       redirect_to admin_reservations_path,
-                                flash: {key: "予約を更新しました"}
+                                flash: {success: "予約を更新しました"}
     else
       flash.now[:danger] = "予約の更新に失敗しました"
       render 'edit', status: 400
@@ -36,7 +36,7 @@ class Admin::ReservationsController < ApplicationController
   def destroy
     @reservation = Reservation.find(params[:id])
     if @reservation.destroy
-      redirect_to admin_reservations_path, notice: "データの削除に成功しました"
+      redirect_to admin_reservations_path, flash: {success: "データの削除に成功しました"}
     else
       flash.now[:danger] = "データの削除に失敗しました"
       render 'index'

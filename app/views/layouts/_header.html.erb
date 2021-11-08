@@ -1,3 +1,29 @@
 <header>
 	<h2><%= full_title(yield(:title)) %></h2>
+	<ul class="nav-bar">
+		<li class="nav-item">
+			<%= link_to movies_path do %>
+				<div class="nav-item-content">
+					<i class="fas fa-play"></i><div class="nav-item-title">作品一覧</div>
+				</div>
+			<% end %>
+		</li>
+		<% if current_user %>
+			<li class="nav-item">
+				<%= link_to logout_path, method: :delete do %>
+					<div class="nav-item-content">
+						<i class="fas fa-play"></i><div class="nav-item-title">ログアウト</div>
+					</div>
+				<% end %>
+			</li>
+		<% else %>
+			<li class="nav-item">
+				<%= link_to users_new_path do %>
+					<div class="nav-item-content">
+						<i class="fas fa-play"></i><div class="nav-item-title">新規登録</div>
+					</div>
+				<% end %>
+			</li>
+		<% end %>
+	</ul>
 </header>
