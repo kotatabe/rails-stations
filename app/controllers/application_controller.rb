@@ -11,8 +11,7 @@ class ApplicationController < ActionController::Base
 		def login_required
 			unless current_user
 				store_location
-				flash.now[:danger] = '予約にはログインが必要です'
-				redirect_to login_path
+				redirect_to login_path, flash: {info: "予約にはログインが必要です"}
 			end
 		end
 end

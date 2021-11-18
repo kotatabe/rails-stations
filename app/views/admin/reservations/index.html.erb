@@ -12,6 +12,7 @@
 			<tr>
 				<th>ID</th>
 				<th>映画タイトル</th>
+				<th>スクリーン</th>
 				<th>座席</th>
 				<th>日時</th>
 				<th>氏名</th>
@@ -22,6 +23,7 @@
 				<tr>
 						<td> <%= r.id %>  </td>
 						<td> <%= r.schedule.movie.name %>  </td>
+						<td> <%= r.schedule.screen.number %>  </td>
 						<td> <%= r.sheet.row %> <%= r.sheet.column %> </td>
 						<td> <%= r.date %> <%= r.schedule.start_time.strftime( "%H:%M" ) %>~<%= r.schedule.end_time.strftime( "%H:%M" ) %></td>
 						<td> <%= r.name %> </td>

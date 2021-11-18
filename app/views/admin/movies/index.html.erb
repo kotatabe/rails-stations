@@ -1,7 +1,12 @@
-<% provide(:title, 'Tech Train') %>
+<% provide(:title, '映画情報') %>
 <%= render 'layouts/sideBar'%>
 <div class="content">
 	<%= render 'shared/flash' %>
+	<div class="schedule-func">
+		<%= link_to new_admin_movie_path do %>
+			<div class="new-btn btn-info btn">+ New</div>
+		<% end %>
+	</div>
 	<div class="movies_table">
 		<table>
 			<tr>
@@ -25,11 +30,18 @@
 						<% else %>
 							<td>上映予定</td>
 						<% end %>
-						<td> <%= movie.description %> </td>
+						<td class="td-description"> <p><%= movie.description %></p> </td>
 						<td> <img src="<%= movie.image_url %>"> </td>
 						<td> <%= movie.created_at.to_s(:datetime_jp) %> </td>
 						<td> <%= movie.updated_at.to_s(:datetime_jp) %> </td>
-						<td> <%= link_to "削除", admin_movie_path(movie.id), method: :delete, data: {confirm: "削除しますか？"} %> </td>
+						<td>
+							<%= link_to admin_movie_path(movie.id), method: :delete, data: {confirm: "削除しますか？"} do %>
+								<i class="fas fa-trash"></i>
+							<% end %>
+							<%= link_to edit_admin_movie_path(movie.id) do %>
+								<i class="far fa-edit"></i>
+							<% end %>
+						</td>
 				</tr>
 			<% end %>
 		</table>

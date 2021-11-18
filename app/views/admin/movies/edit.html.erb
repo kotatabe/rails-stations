@@ -1,9 +1,9 @@
 <% provide(:title, 'Movies Changes') %>
 <%= render 'layouts/sideBar'%>
 <div class="content">
+	<%= render 'shared/flash' %>
 	<div class="registration-form">
 		<%= form_with model: [:admin, @movie] do |f| %>
-			<%= render 'shared/flash' %>
 			<div class="block">
 				<%= f.label :name, "タイトル" %>
 				<%= f.text_field :name, class: 'form-control' %>

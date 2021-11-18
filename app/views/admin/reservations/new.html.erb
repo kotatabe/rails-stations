@@ -1,9 +1,9 @@
 <%= render 'layouts/sideBar'%>
 <div class="content">
-	<h3>予約新規作成</h3>
+	<%= render 'shared/flash' %>
 	<div class="registration-form">
+		<h3>予約新規作成</h3>
 		<%= form_with(model: [:admin, @reservation]) do |f| %>
-			<%= render 'shared/flash' %>
 			<div class="block">
 				<%= f.label :schedule_id, "schedule_id" %>
 				<%= f.collection_select :schedule_id, Schedule.all, :id, :id, class: 'form-control' %>

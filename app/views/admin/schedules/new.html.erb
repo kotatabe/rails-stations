@@ -1,11 +1,16 @@
 <%= render 'layouts/sideBar'%>
 <div class="content">
+	<%= render 'shared/flash' %>
 	<div class="registration-form">
-		<%= form_with(model: @schedule) do |f| %>
-			<%= render 'shared/flash' %>
+		<h3>上映スケジュール新規作成</h3>
+		<%= form_with model: [:admin, @schedule] do |f| %>
 			<div class="block">
 				<%= f.label :movie_id, "映画ID" %>
 				<%= f.text_field :movie_id, class: 'form-control' %>
+			</div>
+			<div class="block">
+				<%= f.label :screen_id, "スクリーンID" %>
+				<%= f.text_field :screen_id, class: 'form-control' %>
 			</div>
 			<div class="block">
 				<%= f.label :start_time, "開始時刻" %>

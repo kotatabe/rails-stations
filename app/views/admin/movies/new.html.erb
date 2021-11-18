@@ -1,8 +1,9 @@
 <%= render 'layouts/sideBar'%>
 <div class="content">
+	<%= render 'shared/flash' %>
 	<div class="registration-form">
+		<h3>新規映画作品登録</h3>
 		<%= form_with(model: [:admin, @movie]) do |form| %>
-			<%= render 'shared/flash' %>
 			<div class="block">
 				<%= form.label :name, "タイトル" %>
 				<%= form.text_field :name, class: 'form-control' %>
@@ -23,8 +24,8 @@
 				<%= form.label :image_url , "画像URL" %>
 				<%= form.text_field :image_url, class: 'form-control' %>
 			</div>
-			<div class='btn'>
-				<%= form.submit "Save", class: 'btn-primary' %>
+			<div class='submit'>
+				<%= form.submit "Save", class: 'btn-primary btn' %>
 			</div>
 		<% end %>
 	</div>

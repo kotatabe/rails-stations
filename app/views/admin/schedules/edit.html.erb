@@ -1,12 +1,16 @@
 <% provide(:title, 'Schedule Changes') %>
 <%= render 'layouts/sideBar'%>
 <div class="content">
+	<%= render 'shared/flash' %>
 	<div class="registration-form">
-		<%= form_with model: @schedule do |f| %>
-			<%= render 'shared/flash' %>
+		<%= form_with model: [:admin, @schedule] do |f| %>
 			<div class="block">
 				<%= f.label :movie_id, "映画ID" %>
-				<%= f.collection_select :movie_id, Movie.all, :id, :id, class: 'form-control' %>
+				<%= f.collection_select :movie_id, Screen.all, :id, :id, class: 'form-control' %>
+			</div>
+			<div class="block">
+				<%= f.label :screen_id, "スクリーンID" %>
+				<%= f.collection_select :screen_id, Screen.all, :id, :id, class: 'form-control' %>
 			</div>
 			<div class="block">
 				<%= f.label :start_time, "開始時刻" %>

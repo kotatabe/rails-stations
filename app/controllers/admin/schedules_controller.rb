@@ -6,11 +6,11 @@ class Admin::SchedulesController < ApplicationController
 		def new
 			@schedule = Schedule.new
 		end
-	
+	w
 		def create
 			@schedule = Schedule.new(schedule_params)
 			if @schedule.save
-				redirect_to schedules_path
+				redirect_to admin_schedules_path
 			else
 				flash.now[:danger] = "新規データ登録に失敗しました"
 				render 'new'
@@ -24,7 +24,7 @@ class Admin::SchedulesController < ApplicationController
 		def update
 			@schedule = Schedule.find(params[:id])
 			if @schedule.update(schedule_params)
-				redirect_to schedules_path
+				redirect_to admin_schedules_path
 			else
 				flash.now[:danger] = "データの更新に失敗しました"
 				render 'edit'
@@ -34,7 +34,7 @@ class Admin::SchedulesController < ApplicationController
 		def destroy
 			@schedule = Schedule.find(params[:id])
 			if @schedule.destroy
-				redirect_to schedules_path, flash: { :success: 'データの削除に成功しました'}
+				redirect_to admin_schedules_path, flash: { success: 'データの削除に成功しました'}
 			else
 				flash.now[:danger] = "データの削除に失敗しました"
 				render 'index'
@@ -43,6 +43,6 @@ class Admin::SchedulesController < ApplicationController
 	
 		private
 			def schedule_params
-				params.require(:schedule).permit(:movie_id, :start_time, :end_time)
+				params.require(:schedule).permit(:movie_id,:screen_id, :start_time, :end_time)
 			end	
 end

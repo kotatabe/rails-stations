@@ -1,9 +1,9 @@
 <% provide(:title, '予約編集画面') %>
 <%= render 'layouts/sideBar'%>
 <div class="content">
+	<%= render 'shared/flash' %>
 	<div class="registration-form">
 		<%= form_with model: [:admin, @reservation] do |f| %>
-			<%= render 'shared/flash' %>
 			<div class="block">
 				<%= f.label :schedule_id, "schedule_id" %>
 				<%= f.collection_select :schedule_id, Schedule.all, :id, :id, class: 'form-control' %>

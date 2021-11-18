@@ -1,4 +1,4 @@
-<% provide(:title, 'Schedule') %>
+<% provide(:title, '上映スケジュール') %>
 <%= render 'layouts/sideBar'%>
 <div class="content">
 	<%= render 'shared/flash' %>
@@ -13,6 +13,7 @@
 				<th>ID</th>
 				<th>映画タイトル</th>
 				<th>movies_id</th>
+				<th>スクリーン</th>
 				<th>開始時刻</th>
 				<th>終了時刻</th>
 				<th>作成日時</th>
@@ -24,6 +25,7 @@
 						<td> <%= link_to schedule.id, edit_admin_schedule_path(schedule.id) %> </td>
 						<td> <%= schedule.movie.name %> </td>
 						<td> <%= schedule.movie_id %> </td>
+						<td> <%= schedule.screen.number %> </td>
 						<td> <%= schedule.start_time.to_s(:datetime_jp) %> </td>
 						<td> <%= schedule.end_time.to_s(:datetime_jp) %> </td>
 						<td> <%= schedule.created_at.to_s(:datetime_jp) %> </td>
